@@ -1,0 +1,92 @@
+{% extends '../_TEMPLATE.html' %}
+
+{% block title %}
+POST NEW ITEM
+{% endblock title %}
+
+{% block style %}
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+#preview{
+    border:0.5px grey solid;
+    min-height:70vh;
+    overflow: visible;
+}
+{% endblock style %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="row" style="height:20vh">
+    </div>
+    <div class="row shadow-sm">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" action="/shop/post-item" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                            <input type="text" class="form-control" placeholder="Name" name="name">
+                            </div>
+                            <div class="col">
+                            <input type="text" class="form-control" placeholder="Price" name="price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Descriptions</label>
+                            <textarea oninput="previewUpdate()" class="form-control" id="description" rows="4" name="description"></textarea>
+                            {% comment %} <button onclick="previewUpdate()" class="btn btn-warning">Preview</button> {% endcomment %}
+                        </div>
+                        <div class="form-group" id="image-forms">
+                            <label for="image">Images</label>
+                            <input type="file" class="form-control-file" id="image0" name="image0" required>
+                        </div>
+                        <button onclick="createImageForm()" class="btn btn-dark">Add More Image</button>
+                        <button type="submit" class="btn btn-primary">POST</button>
+                    </form>
+                </div>
+                <div class="col-md-6" >
+                    <div id="preview" style="padding:1%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script>
+    var imageCount = 1;
+    var converter = new showdown.Converter();
+    function previewUpdate(){
+        txt = document.getElementById("description").value;
+        console.log(txt);
+        preview = document.getElementById("preview");
+        html = converter.makeHtml(txt);
+        preview.innerHTML = html;
+    }
+
+    function createImageForm(){
+        var container = document.getElementById("image-forms")
+        var node = document.createElement("input")
+        node.type = "file"
+        node.id=`image${imageCount}`
+        node.name=`image${imageCount}`
+        node.className ="form-control-file";
+        node.required = true;   
+        container.appendChild(node)
+        imageCount += 1;
+    }
+</script>
+
+{% endblock script %}

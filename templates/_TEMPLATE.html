@@ -1,0 +1,165 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block title %}{% endblock title %}</title>
+  
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  {% block head %}
+  {% endblock head %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amaranth&family=Balsamiq+Sans:wght@700&family=Berkshire+Swash&display=swap" rel="stylesheet">
+  <style>
+.navbar-light .navbar-brand {
+  color:rgb(250,108,135);
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+      
+}
+.navbar{
+  font-family: 'Balsamiq Sans', cursive;
+  background-color:#f9f9f9;
+  
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+  color:rgb(250,135,108);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:rgb(250,135,108);
+}
+
+.navbar-toggler {
+  background: #fff;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-link {
+  padding: .2rem 1rem;
+}
+
+.nav-link.active,.nav-link:focus{
+  color: grey;
+}
+
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 0.3;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: grey;
+}
+
+
+
+
+
+
+/* ignore the code below */
+
+
+.link-area
+{
+  position:fixed;
+  bottom:20px;
+  left:20px;  
+  padding:15px;
+  border-radius:40px;
+  background:tomato;
+}
+.link-area a
+{
+  text-decoration:none;
+  color:rgb(20,20,20);
+  font-size:25px;
+}
+.nav-link:hover{
+  text-decoration:underline;
+}
+    .footer{
+    min-height:30vh;
+    background-color:#FF5877;
+  }
+  {% block style %}
+  {% endblock style %}
+  </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/" style="font-family: 'Amaranth', sans-serif;"> <img src="{% static 'media/ibeauty_logo.png' %}" alt="..." class="img-fluid rounded" width="8%" height="8%">&nbsp;iBeauty</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">&nbsp;&nbsp;About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">&nbsp;<i class="fas fa-shopping-bag"></i>&nbsp;Store</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#footer">&nbsp;Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+      {% block body %}
+      {% endblock body %}
+      <div class="row footer" id="footer" style="color:white">
+        <div class="container">
+          <div class="row" style="padding:5%;">
+            <div class="col-sm-12 col-md-4">
+              <h1 class="display-4">Contacts</h1>
+            </div>
+            <div class="col-sm-12 col-md-4" style="border-right:1px white solid;margin-bottom:3%;">
+              <div class="lead font-weight-bold">Social</div><br>
+              <i class="fab fa-facebook"></i> iBeauty Online Shop <br>
+              <i class="fas fa-phone"></i> 09 886 667838  
+            </div>
+            <div class="col-sm-12 col-md-4" style="border-right:1px white solid;margin-bottom:3%;">
+              <div class="lead font-weight-bold">Location</div><br>
+              <i class="fas fa-map-marker-alt"></i> Yangon <br>
+              <i class="fas fa-map-marker-alt"></i> Kyaing Tone
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/fontawsome.js' %}"></script>
+    <script src="{% static 'js/three.js' %}"></script>
+    <script src="{% static 'js/wave.js' %}"></script>
+    <script src="{% static 'js/showdown.js' %}"></script>
+    <script>
+    var converter = new showdown.Converter();
+    descriptions = document.getElementsByClassName("modal-body")
+    for (i = 0; i < descriptions.length; i++) {
+      descriptions[i].innerHTML=converter.makeHtml(descriptions[i].innerHTML)
+    }
+    </script>
+    {% block script %}
+    {% endblock script %}
+</body>
+</html>
