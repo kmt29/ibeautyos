@@ -29,21 +29,31 @@ shop | ibeautyos
   .list-group-item a:hover{
       border-bottom:2px #FF5877 solid;
       text-decoration:none;
+  }.buffer{
+      height:5vh;
   }
-    @media screen and (max-width: 575.98px) { 
-        .placeholder{
-            padding-top:25%;
+@media screen and (max-width: 575.98px) { 
+        .buffer{
+            height:10vh;
         }
  }
+ @media screen and (min-width: 768px) and (max-width: 991.98px) { 
+     .buffer{
+         height:5vh;
+     }
+  }
+
+  }
 {% endblock style %}
 
 {% block body %}
-
+<div class="row buffer">
+</div>
 <div class="row">
     <div class="col-sm-12 col-md-3 placeholder" style="text-align:center;">
-
         <ul class="list-group">
         <li class="list-group-item"><div class="display-4">Tags</div></li>
+        <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop">all</a></li>
         {% for tag in tags %}
         <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop/tag/{{tag.name}}">{{tag.name}}</a></li>
         {% endfor %}
@@ -51,8 +61,13 @@ shop | ibeautyos
     </div>
     <div class="col-sm-12 col-md-9 placeholder items" style="background-color:#f9f9f9">
         <div class="row">
+            <div class="col-12">
+                <h1 class="display-4">{{search_tag.name | title}}<h1>
+            </div>
+        </div>
+        <div class="row">
             {% for item in item   %}
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card mb-4 shadow-sm">
                     
                     <div id="c{{item.id}}" class="carousel">
@@ -84,10 +99,15 @@ shop | ibeautyos
 
                     <div class="card-body">
                         <p class="card-text">
-                        🍏🍉 <span style="font-weight: 600; font-style: italic; font-size:16.5px;">{{item.name}}</span> 🍑🥝
+                        <span class="lead" style="font-weight: 600;">{{item.name}}</span> 
                         <br>
-                        ✅ Price - {{item.price}}Ks 
-                        
+                        💵 Price - {{item.price}}Ks 
+                        <br>
+                         {% if item.is_stock %}
+                            ✅ In Stock
+                        {% else %}
+                            ❌ Not In Stock
+                         {% endif %}
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">

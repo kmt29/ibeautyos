@@ -13,11 +13,12 @@ def shop(request):
     return render(request, "shop/shop.html", context)
 
 def get_by_tag(request,tag):
-    tag = Tag.objects.get(name=tag)
-    item = tag.item_set.all()
+    search_tag = Tag.objects.get(name=tag)
+    item = search_tag.item_set.all()
     tags = Tag.objects.all()
     context = {'item':item,
-                'tags':tags}
+                'tags':tags,
+                'search_tag':search_tag}
     return render(request,"shop/shop.html",context)
 
 def post_item(request):
