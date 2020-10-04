@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': get_KEY("DB_NAME"),
         'HOST': get_KEY("DB_HOST"),
-        'PORT': get_KEY("DB_PORT"),
+        'PORT': int(get_KEY("DB_PORT")),
         'USER': get_KEY("DB_USER"),
         'PASSWORD': get_KEY("DB_PASSWORD"),
     }
