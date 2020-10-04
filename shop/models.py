@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.postgres.fields.array import ArrayField
+from django.shortcuts import redirect
 
 class Tag(models.Model):
     name=models.CharField(max_length=20,blank=False)
@@ -32,6 +33,31 @@ class Item(models.Model):
             data = ''
         return data
 
+class Webcontent(models.Model):
+    lead_1 = models.TextField(max_length=None,blank=True)
+    lead_2 = models.TextField(max_length=None,blank=True)
+    topic_1 = models.TextField(max_length=None,blank=True)
+    topic_2 = models.TextField(max_length=None,blank=True)
+    topic_3 = models.TextField(max_length=None,blank=True)
+    content_1 = models.TextField(max_length=None,blank=True)
+    content_2 = models.TextField(max_length=None,blank=True)
+    content_3 = models.TextField(max_length=None,blank=True)
+
+    lead_1_mm = models.TextField(max_length=None,blank=True)
+    lead_2_mm = models.TextField(max_length=None,blank=True)
+    topic_1_mm = models.TextField(max_length=None,blank=True)
+    topic_2_mm = models.TextField(max_length=None,blank=True)
+    topic_3_mm = models.TextField(max_length=None,blank=True)
+    content_1_mm = models.TextField(max_length=None,blank=True)
+    content_2_mm = models.TextField(max_length=None,blank=True)
+    content_3_mm = models.TextField(max_length=None,blank=True)
+
+    def save(self, *args, **kwargs):
+        if Webcontent.objects.count() == 1:
+            tobedeleted = Webcontent.objects.all()
+            tobedeleted[0].delete()
+            
+        super(Webcontent, self).save(*args, **kwargs)
 
         
 

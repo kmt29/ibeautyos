@@ -23,7 +23,7 @@ Home | ibeauty
      padding:3%;
    }
    .intro-row{
-     min-height:50vh;
+     min-height:40vh;
    }
   #feature{
     background-color:#FA6C87;
@@ -54,7 +54,8 @@ Home | ibeauty
     width:80%;
   }
   .intro{
-    padding:5%;
+    padding:10%;
+    text-align:center;
   }
  }
 
@@ -85,9 +86,9 @@ Home | ibeauty
 <div class="row" id = "header">
     <div class="jumbotron shadow-lg">
   <h1 class="display-4" style="font-family: 'Berkshire Swash', cursive;">iBeauty</h1>
-  <p class="lead">Everything you wanted with a very satisfying price</p>
+  <p class="lead">{{lead1}}</p>
   <hr class="my-4">
-  <p>Facial? Body? skin care? Accessories? It's all here.</p>
+  <p>{{lead2}}</p>
   <p class="lead">
     <a class="btn btn-lg" href="/shop" role="button" style="background-color:#FA6C87; color:white;">Shop Now</a>
   </p>
@@ -97,8 +98,9 @@ Home | ibeauty
   <div class="col-sm-12 col-md-1 col-lg-2">
   </div>
     <div class="col-sm-12 col-md-5 col-lg-4 intro" >
-    <h1 class="display-4">Is It Reliable?</h1>
-    {% lorem 1 b %}
+    <h1 class="display-4">{{topic1}}</h1>
+    <br>
+    {{content1}}
   </div>
   <div class="col-sm-12 col-md-5 col-lg-4 intro">
       <img src={% static 'media/lengeige.png' %} class="rounded mx-auto d-block" alt="...">
@@ -113,8 +115,9 @@ Home | ibeauty
       <img src={% static 'media/ordinary.png' %} class="rounded mx-auto d-block" alt="...">
   </div>
     <div class="col-sm-12 col-md-5 col-lg-4 intro">
-        <h1 class="display-4">How it Work</h1>
-        {% lorem 1 b %}
+        <h1 class="display-4">{{topic2}}</h1>
+        <br>
+        {{content2}}
   </div>
     <div class="col-sm-12 col-md-1 col-lg-2">
   </div>
@@ -123,8 +126,14 @@ Home | ibeauty
   <div class="col-sm-12 col-md-1 col-lg-2">
   </div>
     <div class="col-sm-12 col-md-5 col-lg-4 intro" style="color:white" >
-    <h1 class="display-4">Ready To Shop?</h1>
-    {% lorem 1 b %}
+    <h1 class="display-4">{{topic3}}</h1>
+    <br>
+    {{content3}}
+    <br><br>
+    <a class = "btn btn-info shadow-lg" href="/shop">STORE</a>
+    &nbsp;
+    <br><br>
+    <a href="/lang/mm" style="color:white">မြန်မာလိုဖတ်ရန်</a> | <a href="/" style="color:white">English</a>
   </div>
   <div class="col-sm-6 col-md-5 col-lg-3 intro">
       {% for item in item %}

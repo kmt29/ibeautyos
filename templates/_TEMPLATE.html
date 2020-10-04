@@ -62,13 +62,6 @@
 }
 
 
-
-
-
-
-/* ignore the code below */
-
-
 .link-area
 {
   position:fixed;
@@ -90,6 +83,13 @@
     .footer{
     min-height:30vh;
     background-color:#FF5877;
+  }
+  .footer a {
+    color:white;
+  }
+  .footer a:hover{
+    text-decoration:none;
+    font-weight:600;
   }
   {% block style %}
   {% endblock style %}
@@ -118,6 +118,16 @@
         <li class="nav-item">
           <a class="nav-link" href="#footer">&nbsp;Contact</a>
         </li>
+        {% comment %} <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Language
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/lang/eng">English</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/lang/mm">မြန်မာ</a>
+          </div>
+      </li> {% endcomment %}
       </ul>
     </div>
   </div>
@@ -133,8 +143,8 @@
             </div>
             <div class="col-sm-12 col-md-4" style="border-right:1px white solid;margin-bottom:3%;">
               <div class="lead font-weight-bold">Social</div><br>
-              <i class="fab fa-facebook"></i> iBeauty Online Shop <br>
-              <i class="fas fa-phone"></i> 09 886 667838  
+              <a href='https://www.facebook.com/iBeautyOS/'><i class="fab fa-facebook"></i> iBeauty Online Shop <br></a>
+              <a href="tel:09886667838"><i class="fas fa-phone"></i> 09 886 667838 </a>  
             </div>
             <div class="col-sm-12 col-md-4" style="border-right:1px white solid;margin-bottom:3%;">
               <div class="lead font-weight-bold">Location</div><br>

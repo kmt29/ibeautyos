@@ -8,6 +8,7 @@ import base64
 def shop(request):
     item = Item.objects.all()
     tags = Tag.objects.all()
+    
     context = {'item':item,
                 'tags':tags}
     return render(request, "shop/shop.html", context)
