@@ -11,75 +11,17 @@
   {% block head %}
   {% endblock head %}
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amaranth&family=Balsamiq+Sans:wght@700&family=Berkshire+Swash&display=swap" rel="stylesheet">
   <style>
-.navbar-light .navbar-brand {
-  color:rgb(250,108,135);
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-      
-}
-.navbar{
-  font-family: 'Balsamiq Sans', cursive;
-  background-color:#f9f9f9;
-  
-}
-
-.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
-  color:rgb(250,135,108);
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color:rgb(250,135,108);
-}
-
-.navbar-toggler {
-  background: #fff;
-}
-
-.navbar-nav {
-  text-align: center;
-}
-
-.nav-link {
-  padding: .2rem 1rem;
-}
-
-.nav-link.active,.nav-link:focus{
-  color: grey;
-}
-
-.navbar-toggler {
-  padding: 1px 5px;
-  font-size: 18px;
-  line-height: 0.3;
-}
-
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-  color: grey;
-}
-
-
-.link-area
-{
-  position:fixed;
-  bottom:20px;
-  left:20px;  
-  padding:15px;
-  border-radius:40px;
-  background:tomato;
-}
-.link-area a
-{
-  text-decoration:none;
-  color:rgb(20,20,20);
-  font-size:25px;
-}
-.nav-link:hover{
-  text-decoration:underline;
-}
+  .navbar{
+    font-family: 'Balsamiq Sans', cursive;
+    background-color:#f9f9f9;
+    
+  }
+  .navbar .nav-item .nav-link, .navbar-brand a {
+    color:#fa6c87;
+  }
     .footer{
     min-height:30vh;
     background-color:#FF5877;
@@ -97,41 +39,40 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
-  <div class="container">
-    <a class="navbar-brand" href="/" style="font-family: 'Amaranth', sans-serif;"> <img src="{% static 'media/ibeauty_logo.png' %}" alt="..." class="img-fluid rounded" width="8%" height="8%">&nbsp;iBeauty</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+    <a class="navbar-brand" href="#" style="font-family: 'Oswald', sans-serif; font-size:180%;">
+       <img src="{% static 'media/ibeauty_logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">&nbsp;
+       iBEAUTY
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">&nbsp;Home</a>
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item" >
+          <a class="nav-link"  href="/">Home  </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#about">&nbsp;&nbsp;About</a>
+          <a class="nav-link" href="/#about">About  </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/shop">&nbsp;<i class="fas fa-shopping-bag"></i>&nbsp;Store</a>
+          <a class="nav-link" href="/shop"><i class="fas fa-shopping-bag"></i>&nbsp;Store </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#footer">&nbsp;Contact</a>
+          <a class="nav-link" href="/#footer">Contact </a>
         </li>
-        {% comment %} <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Language
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/lang/eng">English</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/lang/mm">မြန်မာ</a>
-          </div>
-      </li> {% endcomment %}
+        
+        {% if request.user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link btn" style="color:white;background-color:#fa6c87;" href="/shop/post-item">Add Product</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
-  </div>
-</nav>
+    </div>
+  </nav>
 <div class="container-fluid">
       {% block body %}
       {% endblock body %}

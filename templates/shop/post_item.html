@@ -39,7 +39,7 @@ POST NEW ITEM
                             <input type="text" class="form-control" placeholder="Name" name="name">
                             </div>
                             <div class="col">
-                            <input type="text" class="form-control" placeholder="Price" name="price">
+                            <input type="number" class="form-control" placeholder="Price" name="price">
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,6 +51,7 @@ POST NEW ITEM
                             <label for="image">Images</label>
                             <input type="file" class="form-control-file" id="image0" name="image0" required>
                         </div>
+                        <button onclick="removeImageForm()" class="btn btn-danger">Remove Image</button>
                         <button onclick="createImageForm()" class="btn btn-dark">Add More Image</button>
                         <button type="submit" class="btn btn-primary">POST</button>
                     </form>
@@ -86,6 +87,16 @@ POST NEW ITEM
         node.required = true;   
         container.appendChild(node)
         imageCount += 1;
+    }
+
+    function removeImageForm(){
+        if(imageCount > 1){
+            var id = `image${imageCount-1}`;
+            var imageForm = document.getElementById(id);
+            imageForm.remove();
+            imageCount -= 1;
+        }
+
     }
 </script>
 

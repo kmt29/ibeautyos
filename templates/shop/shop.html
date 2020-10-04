@@ -5,6 +5,14 @@ shop | ibeautyos
 {% endblock title %}
 
 {% block style %}
+    .tag-row{
+        margin:1%;
+    }.tag-title{
+        padding:0.5%;
+        color:#fa6c87;
+        text-align:center;
+        background-color:#f4f4ec;
+    }
   .carousel-inner img{
     width: 100%;
     height: 100%;
@@ -21,16 +29,20 @@ shop | ibeautyos
     opacity: .3;
   }     
   .placeholder{
-      padding:5%;
+      padding:2%;
+      padding-top:3%;
   }
   .items{
       min-height:100vh;
+  }
+  .list-group-item a {
+      color:black;
   }
   .list-group-item a:hover{
       border-bottom:2px #FF5877 solid;
       text-decoration:none;
   }.buffer{
-      height:5vh;
+      height:4vh;
   }
 @media screen and (max-width: 575.98px) { 
         .buffer{
@@ -50,21 +62,21 @@ shop | ibeautyos
 <div class="row buffer">
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-3 placeholder" style="text-align:center;">
-        <ul class="list-group">
-        <li class="list-group-item"><div class="display-4">Tags</div></li>
-        <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop">all</a></li>
+    <div class="col-sm-12 col-md-2 placeholder tags" style="text-align:center;">
+        <ul class="list-group shadow-sm">
+        <li class="list-group-item" style="background-color:#ff8c58;color:white;"><div class="h4">Category</div></li>
+        <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop">All</a></li>
         {% for tag in tags %}
         <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop/tag/{{tag.name}}">{{tag.name}}</a></li>
         {% endfor %}
         </ul>
     </div>
-    <div class="col-sm-12 col-md-9 placeholder items" style="background-color:#ffebee">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="display-4">{{search_tag.name | title}}<h1>
-            </div>
+    <div class="col-sm-12 col-md-10 placeholder items" style="background-color:#ffebee">
+        {% if search_tag %}
+        <div class="row tag-row">
+            <div class="col-12 tag-title"><h1 class="display-4">{{search_tag.name | title}}<h1> </div>
         </div>
+        {% endif %}
         <div class="row">
             {% for item in item   %}
                 <div class="col-sm-12 col-md-6 col-lg-4">
