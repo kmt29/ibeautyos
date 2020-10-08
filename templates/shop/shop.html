@@ -17,7 +17,13 @@ shop | ibeautyos
     width: 100%;
     height: 100%;
   }
-
+    .tags{
+        
+        margin:1%;
+    }
+    .lead:hover{
+        text-decoration:none;
+    }
   .carousel-control-prev,
   .carousel-control-next{
     height: 40px;
@@ -62,16 +68,29 @@ shop | ibeautyos
 <div class="row buffer">
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-2 placeholder tags" style="text-align:center;">
-        <ul class="list-group shadow-sm">
-        <li class="list-group-item" style="background-color:#ff8c58;color:white;"><div class="h4">Category</div></li>
-        <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop">All</a></li>
-        {% for tag in tags %}
-        <li class="list-group-item" style="font-family: 'Balsamiq Sans', cursive;"><a href="/shop/tag/{{tag.name}}">{{tag.name}}</a></li>
-        {% endfor %}
-        </ul>
+    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" style="text-align:center;">
+        <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#FF5877;">
+                <h1 class="laed">Category</h1>
+                </button>
+            </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <a class="btn btn-secondary tags" href="/shop">All</a>
+               {% for tag in tags %}
+                    <a class="btn btn-secondary tags" href="/shop/tag/{{tag.name}}">{{tag.name}}</a>
+               {% endfor %}
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-10 placeholder items" style="background-color:#ffebee">
+    <div class="col-sm-12 col-md-10 placeholder items" style="background-color:#f9f9f9">
         {% if search_tag %}
         <div class="row tag-row">
             <div class="col-12 tag-title"><h1 class="display-4">{{search_tag.name | title}}<h1> </div>
@@ -154,4 +173,21 @@ shop | ibeautyos
 {% endblock body %} 
 
 {% block script %}
+<script>
+VANTA.WAVES({
+  el: ".tag-col",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xfa6c86,
+  shininess: 10.00,
+  waveHeight: 9.50,
+  waveSpeed: 2.00,
+  zoom: 1.07
+})
+</script>
 {% endblock script %}
