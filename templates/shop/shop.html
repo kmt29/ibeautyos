@@ -117,7 +117,7 @@ shop | ibeautyos
         {% endif %}
         <div class="row">
             {% for item in item   %}
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="card mb-4 shadow-sm">
                     
                     <div id="c{{item.id}}" class="carousel">
@@ -149,7 +149,7 @@ shop | ibeautyos
 
                     <div class="card-body">
                         <p class="card-text">
-                        <span class="lead" style="font-weight:bold;">{{item.name}}</span> 
+                        <span class="" style="">{{item.name}}</span> 
                                                  <br>
                          {% comment %} <span class="" style="font-size:15px;">
                             {{item.related.all}}
