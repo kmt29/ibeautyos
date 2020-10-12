@@ -2,7 +2,7 @@ from django.shortcuts import render
 from shop.models import *
 # Create your views here.
 def home(request):
-    return home_with_language(request,'eng')
+    return home_with_language(request,'mm')
 
 def home_with_language(request,lang):
     item = None
