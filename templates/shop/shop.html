@@ -81,7 +81,6 @@ shop | ibeautyos
      }
   }
 
-  }
 {% endblock style %}
 
 {% block body %}
@@ -150,7 +149,11 @@ shop | ibeautyos
 
                     <div class="card-body">
                         <p class="card-text">
-                        <span class="lead" style="font-weight: 600;">{{item.name}}</span> 
+                        <span class="" style="">{{item.name}}</span> 
+                                                 <br>
+                         {% comment %} <span class="" style="font-size:15px;">
+                            {{item.related.all}}
+                         </span>  {% endcomment %}
                         <br>
                         💵 Price - {{item.price}}Ks 
                         <br>
