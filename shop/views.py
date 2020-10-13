@@ -22,6 +22,11 @@ def get_by_tag(request,tag):
                 'search_tag':search_tag}
     return render(request,"shop/shop.html",context)
 
+def item_detail(request,id):
+    item = Item.objects.get(id=id)
+    context = {'item':item}
+    return render(request,"shop/item.html",context)
+
 def post_item(request):
     form = product_posting_form()
     if request.user.is_staff:
