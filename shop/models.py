@@ -40,7 +40,7 @@ class Image(models.Model):
     class Meta:
         app_label = 'shop'
     item = models.ForeignKey(Item,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/',blank=True,null=True)
 
     def __str__(self):
         return self.item.name
