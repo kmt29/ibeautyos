@@ -4,6 +4,8 @@ from django.contrib.postgres.fields.array import ArrayField
 from django.shortcuts import redirect
 
 class Tag(models.Model):
+    class Meta:
+        app_label = 'shop'
     name=models.CharField(max_length=20,blank=False)
 
     def __str__(self):
@@ -12,6 +14,8 @@ class Tag(models.Model):
         
 # Create your models here.
 class Item(models.Model):
+    class Meta:
+        app_label = 'shop'
     name = models.CharField(max_length=200,blank=False)
     description = models.TextField(max_length=None,blank=True)
     is_stock = models.BooleanField(default=True)
@@ -33,6 +37,8 @@ class Item(models.Model):
         return data
     
 class Image(models.Model):
+    class Meta:
+        app_label = 'shop'
     item = models.ForeignKey(Item,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/')
 
@@ -40,6 +46,8 @@ class Image(models.Model):
         return self.item.name
 
 class Webcontent(models.Model):
+    class Meta:
+        app_label = 'shop'
     lead_1 = models.TextField(max_length=None,blank=True)
     lead_2 = models.TextField(max_length=None,blank=True)
     topic_1 = models.TextField(max_length=None,blank=True)
