@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/static/media/ibeauty_logo.png" type="image/icon type">
+  <link rel="icon" href="{% static 'media/ibeauty_logo.png' %}" type="image/icon type">
   <title>{% block title %}{% endblock title %}</title>
 
   {% block head %}
@@ -71,7 +71,7 @@
         
         {% if request.user.is_staff %}
           <li class="nav-item">
-            <a class="nav-link btn" style="color:white;background-color:#fa6c87;" href="/shop/post-item">Add Product</a>
+            <a class="nav-link btn" style="color:white;background-color:#fa6c87;" href="/admin">Admin Panel</a>
           </li>
         {% endif %}
       </ul>

@@ -14,7 +14,6 @@ class Tag(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=200,blank=False)
     description = models.TextField(max_length=None,blank=True)
-    images = ArrayField(models.BinaryField(),null=True,blank=True, editable=False)
     is_stock = models.BooleanField(default=True)
     is_feature = models.BooleanField(default=False)
     tag = models.ManyToManyField(Tag,blank=True)
@@ -22,16 +21,23 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def get_images(self):
         data = []
         try:
-            for images in self.images:
-                data.append(bytes(images).decode('utf-8'))
-        except:
-            data = ''
+            for image in self.image_set.all():
+                data.append(image.image.url)
+        except Exception as e:
+            data.append('/static/media/ibeauty_logo.png')
         return data
+    
+class Image(models.Model):
+    item = models.ForeignKey(Item,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.item.name
 
 class Webcontent(models.Model):
     lead_1 = models.TextField(max_length=None,blank=True)

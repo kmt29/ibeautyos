@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 
     #not defaults
+    'django_cleanup.apps.CleanupConfig',
     'shop.apps.ShopConfig',
     'core.apps.CoreConfig'
 ]
@@ -89,11 +90,11 @@ WSGI_APPLICATION = 'ibeautyos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': get_KEY("DB_NAME"),
-        'HOST': get_KEY("DB_HOST"),
-        'PORT': int(get_KEY("DB_PORT")),
-        'USER': get_KEY("DB_USER"),
-        'PASSWORD': get_KEY("DB_PASSWORD"),
+        'NAME': get_KEY("DB_NAME_DEV"),
+        'HOST': get_KEY("DB_HOST_DEV"),
+        'PORT': int(get_KEY("DB_PORT_DEV")),
+        'USER': get_KEY("DB_USER_DEV"),
+        'PASSWORD': get_KEY("DB_PASSWORD_DEV"),
     }
 }
 
@@ -133,6 +134,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
