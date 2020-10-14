@@ -31,6 +31,7 @@ class Item(models.Model):
         data = []
         try:
             for image in self.image_set.all():
+                print(self.image_set.all)
                 data.append(image.image.url)
         except Exception as e:
             data.append('/static/media/ibeauty_logo.png')
@@ -41,7 +42,7 @@ class Image(models.Model):
         app_label = 'shop'
     item = models.ForeignKey(Item,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/',blank=True,null=True)
-
+    
     def __str__(self):
         return self.item.name
 
