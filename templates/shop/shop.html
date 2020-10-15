@@ -25,6 +25,7 @@ shop | ibeautyos
 {% endblock head %}
 
 {% block style %}
+
     .tag-row{
         margin:1%;
     }.tag-title{
@@ -90,7 +91,7 @@ shop | ibeautyos
 
 {% block body %}
 <div class="row">
-    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" style="text-align:center;">
+    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" id="tag-col" style="text-align:center;">
         <div id="accordion">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -201,6 +202,19 @@ shop | ibeautyos
                 </div>
             {% endfor %}
         </div>
+        <div class="row btn-group-row">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                    {% if item.has_previous %}
+                        <a type="button" href="/shop/?page={{item.previous_page_number}}" class="btn btn-secondary">Previous</a>
+                    {% endif %}
+                    
+                    {% if item.has_next %}
+                        <a type="button" href="/shop/?page={{item.next_page_number}}" class="btn btn-secondary">Next</a>
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
     </div>
   
 </div>
@@ -208,8 +222,9 @@ shop | ibeautyos
 
 {% block script %}
 <script>
+window.onload = () => {
 VANTA.WAVES({
-  el: ".tag-col",
+  el: "#tag-col",
   mouseControls: true,
   touchControls: true,
   gyroControls: false,
@@ -223,5 +238,6 @@ VANTA.WAVES({
   waveSpeed: 2.00,
   zoom: 1.07
 })
+}
 </script>
 {% endblock script %}
