@@ -35,9 +35,10 @@ class Item(models.Model):
     def get_images(self):
         data = []
         try:
-            for image in self.image_set.all():
+            for image in self.itemimage_set.all():
                 data.append(image.image.url)
         except Exception as e:
+            print(e)
             data.append('/static/media/ibeauty_logo.png')
         return data
     
