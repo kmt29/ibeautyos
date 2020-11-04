@@ -12,7 +12,7 @@ def shop(request):
 def get_by_tag(request,tag):
     page_num = request.GET.get('page',1)
     search_tag = None
-    if tag == 'all':
+    if tag == 'all' or tag == None:
         item = Paginator(Item.objects.all(),16)
         item = item.page(page_num)
     else:
@@ -34,30 +34,8 @@ def item_detail(request,id):
     context = {'item':item}
     return render(request,"shop/item.html",context)
 
-# def post_item(request):
-#     form = product_posting_form()
-#     if request.user.is_staff:
-#         if request.method == 'POST':
-#             if form.is_valid:
-                
-#                 form = product_posting_form(request.POST,request.FILES)
-#                 name = form.data['name']
-#                 description = form.data['description']
-#                 price = form.data['price']
-#                 file_list=[]
-#                 x = 0
-#                 for files in request.FILES:
-#                     img_data = base64.b64encode(request.FILES[f'image{x}'].read())
-#                     file_list.append(img_data)
-#                     x = x + 1
-#                 item = Item.objects.create( name=name,
-#                                             description=description,
-#                                             images=file_list,
-#                                             price=price)
-#                 item.save()
-                
-#                 return redirect("/admin")
-                
-#         return render(request, "shop/post_item.html", {'form':form})
+def get_sale_item(request):
+    discounted_items = Item.objects.filter(is_discount=True)
 
-#     return redirect("/")
+    context={'item':discounted_items}
+    return render(request,"shop/sale.html",context)

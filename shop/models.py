@@ -2,6 +2,9 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.postgres.fields.array import ArrayField
 from django.shortcuts import redirect
+from django.utils.datetime_safe import datetime
+
+
 
 class Tag(models.Model):
     class Meta:
@@ -22,6 +25,8 @@ class Item(models.Model):
     is_feature = models.BooleanField(default=False)
     tag = models.ManyToManyField(Tag,blank=True)
     price = models.IntegerField(null=False,blank=False, default=0)
+    is_discount = models.BooleanField(default=False)
+    discounted_price = models.IntegerField(null=False,blank=False, default=0)
 
     def __str__(self):
         return self.name
@@ -36,7 +41,7 @@ class Item(models.Model):
             data.append('/static/media/ibeauty_logo.png')
         return data
     
-class Image(models.Model):
+class ItemImage(models.Model):
     class Meta:
         app_label = 'shop'
     item = models.ForeignKey(Item,on_delete=models.CASCADE)
@@ -44,6 +49,7 @@ class Image(models.Model):
     
     def __str__(self):
         return self.item.name
+
 
 class Webcontent(models.Model):
     class Meta:

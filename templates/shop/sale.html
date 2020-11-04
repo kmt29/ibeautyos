@@ -28,6 +28,9 @@ shop | ibeautyos
     .discount{
         color:red;
     }
+    .title{
+        padding:5%;
+    }
     .tag-row{
         margin:1%;
     }.tag-title{
@@ -93,37 +96,20 @@ shop | ibeautyos
 
 {% block body %}
 <div class="row">
-    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" id="tag-col" style="text-align:center;">
-        <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#FF5877;">
-                <h1 class="lead">Category</h1>
-                </button>
-            </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-                <a class="btn btn-secondary tags" href="/shop">All</a>
-               {% for tag in tags %}
-                    <a class="btn btn-secondary tags" href="/shop/tag/{{tag.name}}">{{tag.name}}</a>
-               {% endfor %}
-            </div>
-            </div>
-        </div>
-        </div>
+    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" id="animation1" style="text-align:center;">
     </div>
-    <div class="col-sm-12 col-md-10 placeholder items" style="background-color:#f9f9f9">
+    <div class="col-sm-12 col-md-8 placeholder items" style="background-color:#f9f9f9">
         {% if search_tag %}
         <div class="row tag-row">
             <div class="col-12 tag-title"><h1 class="display-4">{{search_tag.name | title}}<h1> </div>
         </div>
         {% endif %}
         <div class="row">
+            <div class="container title">
+                <div class="display-2">Discounts</div>
+            </div>
             {% for item in item   %}
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                 <a class="text-decoration-none" href="/shop/item/{{item.id}}">
                     <div class="card mb-4 shadow-sm">
                         
@@ -222,7 +208,8 @@ shop | ibeautyos
             </div>  
         </div>
     </div>
-  
+    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg " id="animation2" style="text-align:center;">
+    </div>
 </div>
 {% endblock body %} 
 
@@ -230,7 +217,22 @@ shop | ibeautyos
 <script>
 window.onload = () => {
 VANTA.WAVES({
-  el: "#tag-col",
+  el: "#animation1",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xfa6c86,
+  shininess: 10.00,
+  waveHeight: 9.50,
+  waveSpeed: 2.00,
+  zoom: 1.07
+})
+VANTA.WAVES({
+  el: "#animation2",
   mouseControls: true,
   touchControls: true,
   gyroControls: false,

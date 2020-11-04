@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     #not defaults
     'django_cleanup.apps.CleanupConfig',
+    'blog.apps.BlogConfig',
     'shop.apps.ShopConfig',
     'core.apps.CoreConfig'
 ]

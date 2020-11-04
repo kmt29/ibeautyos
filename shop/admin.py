@@ -5,16 +5,12 @@ from .models import *
 admin.site.register(Tag)
 admin.site.register(Webcontent)
 
-class ImageAdmin(admin.StackedInline):
-    model = Image
+################################################
+class ItemImageAdmin(admin.StackedInline):
+    model = ItemImage
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    inlines = [ImageAdmin]
-
+    inlines = [ItemImageAdmin]
     class Meta:
        model = Item
-
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    pass
