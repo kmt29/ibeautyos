@@ -25,9 +25,6 @@ shop | ibeautyos
 {% endblock head %}
 
 {% block style %}
-    .discount{
-        color:red;
-    }
     .tag-row{
         margin:1%;
     }.tag-title{
@@ -93,7 +90,7 @@ shop | ibeautyos
 
 {% block body %}
 <div class="row">
-    <div class="col-sm-12 col-md-2 placeholder tag-col shadow-lg" id="tag-col" style="text-align:center;">
+    <div class="col-sm-12 col-md-2 placeholder tag-col" id="tag-col" style="text-align:center;">
         <div id="accordion">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -168,7 +165,7 @@ shop | ibeautyos
                             <br>
                                 <span class="text-muted" >
                                     {% if item.is_discount %}
-                                    💵 price - <s>{{item.price}}Ks </s> | {{item.discounted_price}}Ks <span class="discount">(discount)</span>
+                                    💵 price - <s>{{item.price}}Ks </s> | {{item.discounted_price}}Ks <span class="text-danger">(discount)</span>
                                     {% else %}
                                     💵 Price - {{item.price}}Ks
                                     {% endif %}

@@ -48,7 +48,12 @@
     <div class="row body">
         <div class="col-12">
             <h1 class="display-4">{{item.name}}</h1>
-            <p class="lead text-muted">Price    :   {{item.price}} ks</p>
+                {% if item.is_discount %}
+                💵 price - <s>{{item.price}}Ks </s> | {{item.discounted_price}}Ks <span class="text-danger">(discount)</span>
+                {% else %}
+                💵 Price - {{item.price}}Ks
+                {% endif %}
+                <br><br>
             <div class="tag-container">
             {% for tag in item.tag.all %}
                 <a class="btn btn-secondary" href="/shop/tag/{{tag.name}}">{{tag.name}}</a>
