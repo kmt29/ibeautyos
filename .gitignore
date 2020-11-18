@@ -1,3 +1,4 @@
 KEYS.json
 db.sqlite3
 *.pyc
+staticfiles/
