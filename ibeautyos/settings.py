@@ -30,7 +30,10 @@ SECRET_KEY = get_KEY('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = is_DEBUG()
 
-ALLOWED_HOSTS = ['localhost','ibeautyos.herokuapp.com','ibeautyos.com', 'www.ibeautyos.com', '18.138.85.54']
+if DEBUG == False:
+    ALLOWED_HOSTS = ['localhost','ibeautyos.herokuapp.com','ibeautyos.com', 'www.ibeautyos.com', '18.138.85.54']
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
